@@ -1,3 +1,7 @@
+
+library(qdap)
+
+
 setwd("C:/Users/trey/Documents/GitHub/InfiniticsDMC2015")
 data<-read.csv('SEM_DAILY_BUILD.CSV')
 
@@ -17,8 +21,6 @@ clicks<-data2
 ADBins<-function(adType, clicks, binDivider){
   
   masterTable<-cbind(adType, clicks)
-
-
   masterTable<-as.matrix(masterTable)
   
   #sorting the master table by adtype
@@ -28,14 +30,9 @@ ADBins<-function(adType, clicks, binDivider){
   #tallying the clicks for every adtype
   masterTable<-aggregate(masterTable[,2]~masterTable[,1], FUN=weighted.mean)  
 
-
-
-
   #sorting the master table by clicks
   masterTable<-masterTable[order(masterTable[,2]),]
 
-
-  
   #creating a bin database
   a= length(masterTable[,1])
   i=a
@@ -43,16 +40,12 @@ ADBins<-function(adType, clicks, binDivider){
   counter=0
   bin=1
   binTable<-masterTable
-
-
   
   for (i in a:1){
     counter=masterTable[i,2]+counter
     
     binTable[i,2]=bin
-    
-   
-    
+
     if (counter>bucketSize){
       print(counter)
       bin=bin+1
@@ -60,11 +53,21 @@ ADBins<-function(adType, clicks, binDivider){
     }    
     
   }
-  
   #sorting the bintable by bin number... low bin numbers will be 
   #searched alot so I want the on the top
   binTable<-binTable[order(binTable[,2]),]
   binTable
 
 }
+
+
+
+binTransformer<-function(col, binTable){
+  answer<-lookup(col, binTable, missing=0)
+  answer
+}
+
+
+
+
 
