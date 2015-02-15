@@ -1,17 +1,17 @@
 setwd("C:/Users//Ruicheng//Desktop//dmc-2015/")
 
 build <- read.csv("SEM_DAILY_BUILD.csv", header = T)
+test <- read.csv("SEM_DAILY_VALIDATION.csv", header = T)
 
-AD_ID <- as.factor(build$AD_ID)
-HEADLINE <- as.factor(build$HEADLINE)
 CLICKS <- build$CLICKS
 
-AD_ID.levels <- levels(AD_ID)
-AD_ID.levels <- AD_ID.levels[AD_ID.levels != ""]                    # 13341 factors
-
-HEADLINE.levels <- levels(HEADLINE)
-HEADLINE.levels <- HEADLINE.levels[HEADLINE.levels != ""]           # 26 factors
-
+ENGN_ID.f. <- as.factor(build$ENGN_ID)                # Binary
+LANG_ID.f. <- as.factor(build$LANG_ID)                # Binary
+DVIC_ID.f. <- as.factor(build$DVIC_ID)                # 3 levels
+HEADLINE.f. <- as.factor(build$HEADLINE)              # 27 levels
+DESCRIPTION_1.f. <- as.factor(build$DESCRIPTION_1)    # 69 levels
+DESCRIPTION_2.f. <- as.factor(build$DESCRIPTION_2)    # 33 levels
+LANDING_PAGE.f. <- as.factor(build$LANDING_PAGE)      # 27 levels
 
 # Creating indicator variables for each keywords
 # I called my data train.data and train.click
