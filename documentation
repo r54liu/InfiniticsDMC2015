@@ -15,3 +15,7 @@
   #function buildKWDict take a column from the table and creates a
   #dictionary vector with only the unique keywords
 
+  #file DVIC_R contains:
+     #function DVIC_R takes a column filled with M's, D's, and T's
+     #and gives a list of 1's 2's and 3's
+  
