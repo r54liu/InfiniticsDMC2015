@@ -1,0 +1,17 @@
+#file language contains:
+  #function language takes a column filled with E's and F's
+  #and gives a list of 1's and 0's
+
+#file KW contains
+  #function listKW takes a string and produces a list with
+  #the keywords as the list elements
+
+  #function colKW takes a column from the table and repeatedly
+  #uses listKW on all the elements
+  #the outpout is basically lists inside a master list
+  #the lists inside the master list contain all KW in each of the strings
+  #in the column 
+
+  #function buildKWDict take a column from the table and creates a
+  #dictionary vector with only the unique keywords
+
