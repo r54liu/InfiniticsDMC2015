@@ -1,4 +1,4 @@
-#function takes a column filled with E's and F's and gives a list of 1's and 0's
+#function takes a column filled with E's and F's and gives a list of 1's and 0's.
 
 language<-function(column){
   
