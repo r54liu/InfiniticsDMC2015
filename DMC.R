@@ -14,8 +14,10 @@ HEADLINE.levels <- HEADLINE.levels[HEADLINE.levels != ""]           # 26 factors
 
 
 # Creating indicator variables for each keywords
+# I called my data train.data and train.click
+build.click<- na.omit(subset(train.data, select=c(ENGN_ID, LANG_ID, DVIC_ID, KEYWD_TXT, MTCH_TYPE_ID, HEADLINE, DESCRIPTION_1, DESCRIPTION_2, LANDING_PAGE, TOTAL_QUALITY_SCORE, CLICKS))
 
-KEYWD_TXT <- train.click$KEYWD_TXT
+KEYWD_TXT <- build.click$KEYWD_TXT
 KEYWD_TXT <- levels(KEYWD_TXT)
 keyword <- unlist(strsplit(KEYWD_TXT, "[+]"))
 keyword <- keyword[keyword !=""]
