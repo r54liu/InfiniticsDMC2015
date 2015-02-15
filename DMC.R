@@ -7,7 +7,7 @@ HEADLINE <- as.factor(build$HEADLINE)
 CLICKS <- build$CLICKS
 
 AD_ID.levels <- levels(AD_ID)
-AD_ID.levels <- AD_ID.levels[AD_ID.levels != ""]
+AD_ID.levels <- AD_ID.levels[AD_ID.levels != ""]                    # 13341 factors
 
 HEADLINE.levels <- levels(HEADLINE)
-HEADLINE.levels <- HEADLINE.levels[HEADLINE.levels != ""]
+HEADLINE.levels <- HEADLINE.levels[HEADLINE.levels != ""]           # 26 factors
