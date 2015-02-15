@@ -47,7 +47,6 @@ ADBins<-function(adType, clicks, binDivider){
     binTable[i,2]=bin
 
     if (counter>bucketSize){
-      print(counter)
       bin=bin+1
       counter=0
     }    
