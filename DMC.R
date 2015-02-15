@@ -7,6 +7,7 @@ CLICKS <- build$CLICKS
 
 ENGN_ID.f. <- as.factor(build$ENGN_ID)                # Binary
 LANG_ID.f. <- as.factor(build$LANG_ID)                # Binary
+MTCH_TYPE_ID.f. <- as.factor(build$MTCH_TYPE_ID)      # Binary
 DVIC_ID.f. <- as.factor(build$DVIC_ID)                # 3 levels
 HEADLINE.f. <- as.factor(build$HEADLINE)              # 27 levels
 DESCRIPTION_1.f. <- as.factor(build$DESCRIPTION_1)    # 69 levels
