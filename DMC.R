@@ -15,33 +15,36 @@ DESCRIPTION_2.f. <- as.factor(build$DESCRIPTION_2)    # 33 levels
 LANDING_PAGE.f. <- as.factor(build$LANDING_PAGE)      # 27 levels
 
 # Creating indicator variables for each keywords
-# I called my data train.data and train.click
-build.click<- na.omit(subset(train.data, select=c(ENGN_ID, LANG_ID, DVIC_ID, KEYWD_TXT, MTCH_TYPE_ID, HEADLINE, DESCRIPTION_1, DESCRIPTION_2, LANDING_PAGE, TOTAL_QUALITY_SCORE, CLICKS))
+build.click.only <- na.omit(subset(build, select=c(CLICKS)))
 
-KEYWD_TXT <- build.click$KEYWD_TXT
-KEYWD_TXT <- levels(KEYWD_TXT)
+KEYWD_TXT <- build$KEYWD_TXT
+KEYWD_TXT <- as.character(KEYWD_TXT)
 keyword <- unlist(strsplit(KEYWD_TXT, "[+]"))
 keyword <- keyword[keyword !=""]
 keyword <- unique(keyword)
+keyword <- sort(keyword)
 
 KEYWD_TXT <- paste(KEYWD_TXT, "+", sep= "")
 keyword <-paste(keyword, "+", sep="")
 
-keyword.indicator <- matrix (keyword, ncol=length(keyword), nrow = 1)
+keyword.indicator <- NULL
 
 j = 1
 while (j <= length(KEYWD_TXT)) {
-count = c()
-i = 1
-while (i <= length(keyword)) {
-  if (grepl(keyword[i], KEYWD_TXT[j])) {
-    count <- append (count, 1)
-  } else {
-    count <- append (count, 0)}
-i <- i+1
+  count = c()
+  i = 1
+  while (i <= length(keyword)) {
+    if (grepl(keyword[i], KEYWD_TXT[j])) {
+      count <- append (count, 1)
+    } else {
+      count <- append (count, 0)}
+    i <- i+1
+  }
+  keyword.indicator <- rbind(keyword.indicator, count)
+  j = j+1
 }
-keyword.indicator <- rbind(keyword.indicator, count)
-j = j+1
-}
+
+colnames(keyword.indicator) <- keyword
+keyword.indicator <- as.data.frame.matrix(keyword.indicator)   # convert Matrix into Data Table
 
 # end of creating keyword indicators
